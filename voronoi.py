@@ -5,6 +5,7 @@
 from tkinter import *
 from tkinter import ttk
 import random
+from v_classes import *
 
 ### Constants
 numPoints = 10
@@ -14,15 +15,15 @@ edges = []
 plotX = 500
 plotY = 500
 
-random.seed(5)
+# random.seed(5)
 
 root = Tk()
 canvas = Canvas(root, width=plotX, height=plotY)
+Point.xLimit = plotX
+Point.yLimit = plotY
 
 ##########################################################
 # Main
-##########################################################
-
 def main():
     root.geometry(f'{plotX}x{plotY}+500+500')
     
@@ -42,9 +43,8 @@ def main():
 
 ##########################################################
 # 
-# def delauny_triangulation():
-#     triangulation = []
-    
+def delauny_triangulation():
+    triangulation = []
     
 ##########################################################
 # 
@@ -57,33 +57,6 @@ def gui():
     
     log("finished GUI")
     root.mainloop()
-
-##########################################################
-# Classes
-##########################################################
-class Point:
-    def __init__(self, x = None, y = None):
-        if x is None:
-            self.xPos = random.randint(0,plotX)
-        else:
-            self.xPos = x
-        
-        if y is None:
-            self.yPos = random.randint(0,plotY)
-        else:
-            self.yPos = y
-        
-    def __str__(self):
-        return f"xPos: {self.xPos}; yPos: {self.yPos}"
-        
-    def __repr__(self):
-        return f"xPos: {self.xPos}; yPos: {self.yPos}"
-    
-class Triangle:
-    def __init__(self, point1 : Point, point2: Point, point3 : Point):
-        p1 = point1
-        p2 = point2
-        p3 = point3
 
 ##########################################################
 # Helper functions
